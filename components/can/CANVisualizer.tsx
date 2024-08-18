@@ -25,6 +25,8 @@ const CANVisualizer: React.FC<CANVisualizerProps> = ({ data }) => {
     x: ids,
     type: 'histogram',
     xbins: {
+      start: Math.min(...ids),
+      end: Math.max(...ids),
       size: (Math.max(...ids) - Math.min(...ids)) / 50, // Approximate 50 bins
     },
     marker: { color: 'rgba(100, 200, 102, 0.7)', line: { color: 'rgba(100, 200, 102, 1)', width: 1 } },
