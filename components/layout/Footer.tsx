@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
 const Footer: React.FC = () => {
   const [year, setYear] = useState(new Date().getFullYear());
@@ -11,13 +11,13 @@ const Footer: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const heartVariants = {
+  const heartVariants: Variants = {
     beat: {
       scale: [1, 1.2, 1],
       transition: {
         duration: 0.8,
         repeat: Infinity,
-        repeatType: "reverse",
+        repeatType: "reverse" as const,
       },
     },
   };
