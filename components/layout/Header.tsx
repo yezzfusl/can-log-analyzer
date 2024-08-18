@@ -11,8 +11,14 @@ const Header: React.FC = () => {
 
   useEffect(() => setMounted(true), []);
 
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
+  if (!mounted) return null;
+
   return (
-    <header className="bg-white dark:bg-gray-800 text-gray-800 dark:text-white p-4 sticky top-0 z-50 transition-all duration-300 ease-in-out glassmorphism">
+    <header className="bg-white dark:bg-gray-800 text-gray-800 dark:text-white p-4 sticky top-0 z-50 transition-all duration-300 ease-in-out">
       <nav className="container mx-auto">
         <div className="flex justify-between items-center">
           <Link href="/" className="text-2xl font-bold hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
@@ -25,32 +31,30 @@ const Header: React.FC = () => {
             <Link href="/analyze" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
               Analyze
             </Link>
-            {mounted && (
-              <button
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
-              >
-                {theme === 'dark' ? (
-                  <SunIcon className="h-6 w-6" />
-                ) : (
-                  <MoonIcon className="h-6 w-6" />
-                )}
-              </button>
-            )}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
+              aria-label="Toggle dark mode"
+            >
+              {theme === 'dark' ? (
+                <SunIcon className="h-6 w-6" />
+              ) : (
+                <MoonIcon className="h-6 w-6" />
+              )}
+            </button>
           </div>
           <div className="md:hidden flex items-center">
-            {mounted && (
-              <button
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 mr-2"
-              >
-                {theme === 'dark' ? (
-                  <SunIcon className="h-6 w-6" />
-                ) : (
-                  <MoonIcon className="h-6 w-6" />
-                )}
-              </button>
-            )}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 mr-2"
+              aria-label="Toggle dark mode"
+            >
+              {theme === 'dark' ? (
+                <SunIcon className="h-6 w-6" />
+              ) : (
+                <MoonIcon className="h-6 w-6" />
+              )}
+            </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-800 dark:text-white focus:outline-none"
