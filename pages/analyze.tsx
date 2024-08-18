@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Layout from '../components/layout/Layout';
 import FileUploader from '../components/can/FileUploader';
+import CANVisualizer from '../components/can/CANVisualizer';
 import { parseCANLog } from '../utils/canParser';
 import { ParsedCANLog } from '../types/can';
 
@@ -25,9 +26,11 @@ const Analyze: React.FC = () => {
       {parsedData && (
         <div className="mt-8">
           <h2 className="text-2xl font-bold mb-2">Analysis Results</h2>
-          <p>Total messages: {parsedData.messages.length}</p>
-          <p>Unique IDs: {parsedData.uniqueIDs.length}</p>
-          {/* Add more analysis results here */}
+          <div className="bg-white p-4 rounded-lg shadow mb-8">
+            <p>Total messages: {parsedData.messages.length}</p>
+            <p>Unique IDs: {parsedData.uniqueIDs.length}</p>
+          </div>
+          <CANVisualizer data={parsedData} />
         </div>
       )}
     </Layout>

@@ -11,3 +11,11 @@
 .glassmorphism {
   @apply bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg;
 }
+
+.transition-bg {
+  @apply transition-colors duration-200;
+}
+
+.hover-lift {
+  @apply transform transition duration-200 hover:-translate-y-1;
+}
