@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CAN Log Analyzer
+
+## Overview
+
+CAN Log Analyzer is a powerful web-based tool designed to help automotive engineers and researchers analyze Controller Area Network (CAN) log files with ease. Our application provides advanced visualization, real-time processing, and in-depth analysis of CAN bus data.
+
+## Features
+
+- **Support for Multiple File Formats**: Analyze standard CAN log files (.log, .txt), Vector ASC files (.asc), PCAN-View trace files (.trc), and Kvaser log files (.kva).
+
+- **Interactive Visualizations**: 
+  - CAN Messages Over Time scatter plot
+  - Message ID Distribution histogram
+  - Top N Most Frequent Message IDs bar chart
+
+- **Advanced Analysis**:
+  - Message frequency analysis
+  - Timing and latency calculations
+  - Signal extraction and decoding
+  - Anomaly detection
+
+- **Real-time Processing**: Efficiently handle large datasets with fast processing capabilities.
+
+- **User-Friendly Interface**: Intuitive drag-and-drop file upload and easy-to-navigate results display.
+
+- **Dark Mode Support**: Comfortable viewing experience in different lighting conditions.
+
+## Technology Stack
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Plotly.js
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+`git clone https://github.com/yezzfusl/can-log-analyzer.git`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Navigate to the project directory:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+`cd can-log-analyzer`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Install dependencies:
 
-## Learn More
+`npm install`
 
-To learn more about Next.js, take a look at the following resources:
+4. Run the development server:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`npm run dev`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-## Deploy on Vercel
+## Usage
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Navigate to the "Analyze" page.
+2. Drag and drop your CAN log file into the designated area or click to select a file.
+3. Wait for the analysis to complete.
+4. Explore the visualizations and advanced analysis results.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contact
+
+For any questions or feedback, please open an issue on this repository or contact us at [email](mailto:contact.fayssal.chokri2006@gmail.com).
