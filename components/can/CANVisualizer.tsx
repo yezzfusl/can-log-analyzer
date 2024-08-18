@@ -1,6 +1,7 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import { ParsedCANLog } from '../../types/can';
+import { Data } from 'plotly.js';
 
 const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
 
@@ -12,7 +13,7 @@ const CANVisualizer: React.FC<CANVisualizerProps> = ({ data }) => {
   const timestamps = data.messages.map((msg) => msg.timestamp);
   const ids = data.messages.map((msg) => msg.id);
 
-  const scatterData = {
+  const scatterData: Data = {
     x: timestamps,
     y: ids,
     mode: 'markers',
@@ -20,7 +21,7 @@ const CANVisualizer: React.FC<CANVisualizerProps> = ({ data }) => {
     marker: { size: 5, color: ids, colorscale: 'Viridis' },
   };
 
-  const histogramData = {
+  const histogramData: Data = {
     x: ids,
     type: 'histogram',
     nbinsx: 50,
@@ -37,7 +38,7 @@ const CANVisualizer: React.FC<CANVisualizerProps> = ({ data }) => {
   const topIds = messageFrequency.slice(0, topNIds).map(item => '0x' + item.id.toString(16).toUpperCase().padStart(3, '0'));
   const topFrequencies = messageFrequency.slice(0, topNIds).map(item => item.frequency);
 
-  const barData = {
+  const barData: Data = {
     x: topIds,
     y: topFrequencies,
     type: 'bar',
