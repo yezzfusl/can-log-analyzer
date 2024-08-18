@@ -1,0 +1,13 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  body {
+    @apply bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100;
+  }
+}
+
+.glassmorphism {
+  @apply bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg;
+}
