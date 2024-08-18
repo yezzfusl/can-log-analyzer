@@ -1,12 +1,96 @@
 import React from 'react';
 import { ParsedCANLog } from '../../types/can';
-import { analyzeCANTraffic, detectAnomalies, calculateBurstEvents, extractSignals } from '../../utils/canParser';
 
 interface AdvancedAnalysisProps {
   data: ParsedCANLog;
 }
 
+interface SignalDefinition {
+  name: string;
+  startBit: number;
+  length: number;
+  factor: number;
+  offset: number;
+}
+
+interface SignalDefinitions {
+  [key: number]: SignalDefinition[];
+}
+
+interface ExtractedSignals {
+  [key: string]: {
+    [key: string]: number[];
+  };
+}
+
+interface SignalAnalysisResult {
+  avg: number;
+  min: number;
+  max: number;
+}
+
+interface AnalysisResults {
+  [key: string]: SignalAnalysisResult;
+}
+
 const AdvancedAnalysis: React.FC<AdvancedAnalysisProps> = ({ data }) => {
+  const analyzeCANTraffic = (data: ParsedCANLog): { [key: string]: number } => {
+    const idFrequency: { [key: string]: number } = {};
+    data.messages.forEach((msg) => {
+      const id = msg.id.toString();
+      idFrequency[id] = (idFrequency[id] || 0) + 1;
+    });
+    return idFrequency;
+  };
+
+  const detectAnomalies = (data: ParsedCANLog): number[] => {
+    // Implement anomaly detection logic here
+    return [];
+  };
+
+  const calculateBurstEvents = (data: ParsedCANLog): { start: number; end: number; count: number }[] => {
+    // Implement burst event calculation logic here
+    return [];
+  };
+
+  const extractSignals = (data: ParsedCANLog, signalDefinitions: SignalDefinitions): ExtractedSignals => {
+    const extractedSignals: ExtractedSignals = {};
+
+    data.messages.forEach((message) => {
+      const id = message.id.toString();
+      if (signalDefinitions[message.id]) {
+        if (!extractedSignals[id]) {
+          extractedSignals[id] = {};
+        }
+        signalDefinitions[message.id].forEach((signal) => {
+          if (!extractedSignals[id][signal.name]) {
+            extractedSignals[id][signal.name] = [];
+          }
+          const value = extractSignalValue(message.data, signal);
+          extractedSignals[id][signal.name].push(value);
+        });
+      }
+    });
+
+    return extractedSignals;
+  };
+
+  const extractSignalValue = (data: number[], signal: SignalDefinition): number => {
+    let value = 0;
+    const startByte = Math.floor(signal.startBit / 8);
+    const startBitInByte = signal.startBit % 8;
+    const endByte = Math.floor((signal.startBit + signal.length - 1) / 8);
+    
+    for (let i = startByte; i <= endByte; i++) {
+      const numBitsFromByte = Math.min(8 - (i === startByte ? startBitInByte : 0), signal.length - (i - startByte) * 8);
+      const mask = (1 << numBitsFromByte) - 1;
+      const shift = i === endByte ? 0 : 8 - numBitsFromByte;
+      value = (value << numBitsFromByte) | ((data[i] >> shift) & mask);
+    }
+
+    return value * signal.factor + signal.offset;
+  };
+
   const idFrequency = analyzeCANTraffic(data);
   const anomalies = detectAnomalies(data);
   const burstEvents = calculateBurstEvents(data);
@@ -14,9 +98,7 @@ const AdvancedAnalysis: React.FC<AdvancedAnalysisProps> = ({ data }) => {
   const avgMessageSize = data.messages.reduce((sum, msg) => sum + msg.dlc, 0) / data.messages.length;
   const dataRate = (data.messages.reduce((sum, msg) => sum + msg.dlc, 0) * 8) / data.statistics.duration / 1000; // kbps
 
-  // Signal analysis
-  const signalDefinitions = {
-    // Example signal definitions (you should replace these with actual definitions for your CAN network)
+  const signalDefinitions: SignalDefinitions = {
     0x100: [
       { name: 'EngineRPM', startBit: 0, length: 16, factor: 0.1, offset: 0 },
       { name: 'VehicleSpeed', startBit: 16, length: 8, factor: 1, offset: 0 },
@@ -29,7 +111,7 @@ const AdvancedAnalysis: React.FC<AdvancedAnalysisProps> = ({ data }) => {
 
   const extractedSignals = extractSignals(data, signalDefinitions);
 
-  const analyzeSignal = (signalName: string, values: number[]) => {
+  const analyzeSignal = (signalName: string, values: number[]): SignalAnalysisResult => {
     const avg = values.reduce((sum, val) => sum + val, 0) / values.length;
     const min = Math.min(...values);
     const max = Math.max(...values);
@@ -37,7 +119,7 @@ const AdvancedAnalysis: React.FC<AdvancedAnalysisProps> = ({ data }) => {
   };
 
   const signalAnalysis = Object.entries(extractedSignals).map(([id, signals]) => {
-    const analysisResults = {};
+    const analysisResults: AnalysisResults = {};
     for (const [signalName, values] of Object.entries(signals)) {
       analysisResults[signalName] = analyzeSignal(signalName, values);
     }

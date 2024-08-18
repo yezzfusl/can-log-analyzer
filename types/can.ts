@@ -1,5 +1,3 @@
-// types/can.ts
-
 export interface CANMessage {
   timestamp: number;
   id: number;
