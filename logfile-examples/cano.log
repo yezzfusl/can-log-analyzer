@@ -1,0 +1,50 @@
+1692354225.123456 1R11 213 00 00 00 00 c0 01 00 00 # Engine coolant temperature
+1692354225.123789 2R11 318 92 0b 13 10 11 3a 00 00 # Engine RPM: 2770 RPM
+1692354225.124023 2R11 308 00 ff f6 a6 06 03 80 00 # Vehicle speed: 65 km/h
+1692354225.124257 2R11 408 00 # Brake pedal position: 0%
+1692354225.124491 1R11 358 18 08 20 00 00 00 00 20 # Throttle position: 12%
+1692354225.124725 2R11 418 80 # Accelerator pedal position: 50%
+1692354225.124959 1R11 408 10 # Brake pedal position: 6%
+1692354225.125193 3R11 41C 10 # Steering wheel angle: 4 degrees right
+1692354225.125427 R11 428 00 30 # Fuel level: 48%
+1692354225.125661 2R11 168 e0 7f 70 00 ff ff ff # Transmission gear: 3
+1692354225.125895 2R11 27E c0 c0 c0 c0 00 00 00 00 # Wheel speeds: FL,FR,RL,RR
+1692354225.126129 1R11 248 29 29 0f bc 01 10 00 # Engine load: 41%
+1692354225.126363 1R11 2C8 00 00 00 00 00 00 00 00 # Airbag status
+1692354225.126597 2R11 308 00 ff f6 a7 06 03 80 00 # Vehicle speed: 65.1 km/h
+1692354225.126831 1R11 180 00 00 00 00 00 00 00 00 # Battery voltage: 12.6V
+1692354225.127065 3R11 329 ff 00 ff 00 ff 00 ff 00 # Door status: all closed
+1692354225.127299 2R11 1A0 80 0f 00 00 00 00 00 00 # Engine oil temperature: 95°C
+1692354225.127533 1R11 350 aa 55 aa 55 aa 55 aa 55 # ABS activation status
+1692354225.127767 2R11 420 01 02 03 04 05 06 07 08 # Tire pressures: FL,FR,RL,RR
+1692354225.128001 1R11 200 ff ff ff ff ff ff ff ff # VIN (part 1)
+1692354225.128235 3R11 500 12 34 56 78 9a bc de f0 # VIN (part 2)
+1692354225.128469 2R11 190 00 11 22 33 44 55 66 77 # Outside air temperature: 22°C
+1692354225.128703 1R11 3C0 88 88 88 88 88 88 88 88 # Yaw rate: 2.2 deg/s
+1692354225.128937 2R11 260 01 23 45 67 89 ab cd ef # Engine torque: 230 Nm
+1692354225.129171 1R11 2A0 ff 00 ff 00 ff 00 ff 00 # Wiper status: low speed
+1692354225.129405 3R11 3B0 a0 b0 c0 d0 e0 f0 00 10 # Headlight status: on, low beam
+1692354225.129639 2R11 4A0 1f 2f 3f 4f 5f 6f 7f 8f # HVAC settings
+1692354225.129873 1R11 1C0 aa aa aa aa aa aa aa aa # Cruise control status: active
+1692354225.130107 2R11 380 01 10 02 20 03 30 04 40 # Fuel consumption: 7.2 L/100km
+1692354225.130341 1R11 290 55 55 55 55 55 55 55 55 # Brake fluid level: OK
+1692354225.130575 3R11 450 fe dc ba 98 76 54 32 10 # Odometer: 78,945 km
+1692354225.130809 2R11 1E0 11 22 33 44 55 66 77 88 # Engine fan speed: 60%
+1692354225.131043 1R11 320 ab cd ef 01 23 45 67 89 # Lateral acceleration: 0.2G
+1692354225.131277 2R11 3D0 0a 0b 0c 0d 0e 0f 10 11 # Longitudinal acceleration: 0.1G
+1692354225.131511 1R11 270 f0 e1 d2 c3 b4 a5 96 87 # Stability control status
+1692354225.131745 3R11 3F0 1a 2b 3c 4d 5e 6f 70 81 # Traction control status
+1692354225.131979 2R11 210 92 83 74 65 56 47 38 29 # Engine oil pressure: 65 psi
+1692354225.132213 1R11 340 00 11 22 33 44 55 66 77 # Seat belt status
+1692354225.132447 2R11 440 88 99 aa bb cc dd ee ff # Airbag system status
+1692354225.132681 1R11 2B0 01 23 45 67 89 ab cd ef # Parking brake status: off
+1692354225.132915 3R11 460 fe dc ba 98 76 54 32 10 # Battery current: -2.1A (charging)
+1692354225.133149 2R11 1D0 a1 b2 c3 d4 e5 f6 07 18 # Alternator voltage: 14.2V
+1692354225.133383 1R11 300 29 38 47 56 65 74 83 92 # Engine RPM: 2780 RPM
+1692354225.133617 2R11 3E0 0f 1e 2d 3c 4b 5a 69 78 # Throttle position: 13%
+1692354225.133851 1R11 250 87 96 a5 b4 c3 d2 e1 f0 # Brake pedal position: 8%
+1692354225.134085 3R11 470 10 20 30 40 50 60 70 80 # Vehicle speed: 65.3 km/h
+1692354225.134319 2R11 230 90 a0 b0 c0 d0 e0 f0 00 # Fuel pressure: 380 kPa
+1692354225.134553 1R11 360 11 22 33 44 55 66 77 88 # Transmission fluid temperature: 80°C
+1692354225.134787 2R11 480 99 aa bb cc dd ee ff 00 # Engine coolant temperature: 89°C
+1692354225.135021 1R11 2D0 12 34 56 78 9a bc de f0 # Mass air flow rate: 15 g/s
